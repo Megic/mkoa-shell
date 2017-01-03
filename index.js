@@ -12,8 +12,7 @@ program
         //这里输出子命令的帮助
         console.log('  Examples:');
         console.log('    运行方法：');
-        console.log('    $ ./bin/wcj.js resume ss -n aaaaa');
-        console.log('    $ ./bin/wcj.js resume ss');
+        console.log('    mk b');
         console.log();
     });
 
@@ -29,7 +28,7 @@ program.command('build')
         options.type=options.type?options.type:'full';
         fs.copySync(__dirname+'/tpl/'+options.type+'/', pjpath);//复制文件
         console.log('成功创建Mkoa项目！正在运行npm install...');
-        var ls =cprocess.exec('npm install',{cwd:pjpath});//执行npm安装
+        var ls =cprocess.exec('node npmAll.js',{cwd:pjpath});//执行npm安装
         ls.stdout.on('data', function (data) {
             console.log('stdout: ' + data);
         });

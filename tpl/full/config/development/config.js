@@ -8,6 +8,7 @@ module.exports=function(root){
         ,host:''//访问域名一般不需要配置
         ,defaultPath:""//默认访问路径
         ,apiProxy_open:true
+        ,install_check:true //是否检测install/index文件，并执行
         ,apiProxy_prefix:{} //API调用配置{servicName:prefix}
         ,body_config:{formLimit:'1mb',jsonLimit:'1mb'}
         ,db_open:true
