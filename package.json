@@ -1,0 +1,26 @@
+{
+  "name": "mkoa-shell",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "mk": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Megic/mkoa-shell.git"
+  },
+  "author": "megic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Megic/mkoa-shell/issues"
+  },
+  "homepage": "https://github.com/Megic/mkoa-shell#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "fs-extra": "^1.0.0"
+  }
+}
