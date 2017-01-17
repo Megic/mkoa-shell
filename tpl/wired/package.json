@@ -11,6 +11,10 @@
     "email": "42063622@qq.com",
     "url": "https://github.com/Megic/"
   },
+  "scripts": {
+    "webpack": "cd ./application/webpack/ && webpack",
+    "install": "node npmAll.js"
+  },
   "main": "./app.js",
   "dependencies": {
     "Mkoa": "^2.1.5",
