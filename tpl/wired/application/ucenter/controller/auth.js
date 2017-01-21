@@ -64,7 +64,7 @@ module.exports = function ($this) {
     //****************************
     action['checkLogin']=function (){//判断用户是否已登录
         if ($this.isAuthenticated()){
-            $this.success(this.req.user); //已经登录
+            $this.success($this.req.user); //已经登录
         }else{
             $this.error(401);
         }

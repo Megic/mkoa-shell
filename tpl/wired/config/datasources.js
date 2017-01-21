@@ -15,8 +15,8 @@ module.exports= {
                 ,port:5432
             }
         }
-    },
-    // mongodb:{
+    }
+    // ,mongodb:{
     //     name:'mongodb源',
     //     type:'mongoose',//类型
     //     prefix:'mkoa_',//前缀
