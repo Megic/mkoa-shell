@@ -29,18 +29,29 @@ module.exports = function($this){
     };
     action['piece']=async function (){//分片上传
         let status=$this.POST['status'];//步骤检查
-        let uid='';//当前用户ID
+        let uid=$this.user.id;//当前用户ID
         let storage='default';//使用的存储器
 
         if(!status) {//上传片段
             let fileInfo=await $ST[storage].uploadChunks($this,'user',{uid:uid});
             if(!$this.POST['chunks']||$this.POST['chunks']<=1){//一个分片
-
+                let file=fileInfo.file;
+                await $D('file').create({//插入数据库
+                    userId:uid?uid:0,
+                    path:file.path,
+                    name: file.name,
+                    key:file.key,
+                    type: isIMg(file.path)?1:2,
+                    storage:storage,
+                });
+                $this.body=fileInfo.file;
+            }else{
+                $this.body={"status":fileInfo?0:'类型有误'};
             }
-            $this.body={"status":fileInfo?0:'类型有误'};
         }else if(status== "md5Check"){  //秒传校验
-            if($this.POST['md5'] == "b0201e4d41b2eeefc7d3d355a44c6f5a"){
-                $this.body={"ifExist":1, "path":"kazaff2.jpg"};
+            let has=await $D('file').find({where:{key:$this.POST['sign'],userId:uid?uid:0}});
+            if(has){
+                $this.body={"ifExist":1, "path":has.path};
             }else{
                 $this.body={"ifExist":0};
             }
@@ -52,10 +63,10 @@ module.exports = function($this){
             //记录文件信息
               if(file)await $D('file').create({
                     userId:uid?uid:0,
-                    path:file.shortPath,
+                    path:file.path,
                     name: $this.POST.filename,
                     key:file.key,
-                    type: isIMg(file.shortPath)?1:2,
+                    type: isIMg(file.path)?1:2,
                     storage:storage,
                 });
              $this.body=file?file:'不存在分片文件';

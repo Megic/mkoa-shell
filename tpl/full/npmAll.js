@@ -8,8 +8,8 @@ $C.application='application';//模块文件夹名
 var cprocess = require('child_process');
 // console.log('设置npm源......');
 // cprocess.execSync('npm config set registry http://registry.npm.taobao.org/',{cwd:__dirname});//设置安装源
-console.log('安装全局依赖...');
-cprocess.execSync('npm install',{cwd:__dirname});//执行npm安装
+//console.log('安装全局依赖...');
+//cprocess.execSync('npm install',{cwd:__dirname});//执行npm安装
 //搜索模块文件夹
 var path=__dirname+ '/' +$C.application;
 var moudelList = fs.readdirSync($C.application);//搜索模块目录

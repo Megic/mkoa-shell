@@ -11,7 +11,7 @@ module.exports = function ($this) {
     };
     main['getInfo'] = async function () {//获取当前用户信息
         let user = await $D('user').findOne({
-            where: {id:$this.user.id},  attributes: ['name','phone','email','username','headimgurl']
+            where: {id:$this.user.id},  attributes: ['id','name','phone','email','username','headimgurl']
         });
         $this.success(user);
     };
